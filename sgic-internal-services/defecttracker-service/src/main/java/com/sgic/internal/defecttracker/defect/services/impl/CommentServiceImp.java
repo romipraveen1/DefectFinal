@@ -27,10 +27,13 @@ public class CommentServiceImp implements CommentService{
 		return commentRepository.findCommentsByDefectId(defectId);
 	}
 
+//	@Override
+//	public List<Comments> getByDefectId(Defect defect) {
+//		// TODO Auto-generated method stub
+//		return commentRepository.findByDefect(defect);
+//	}
 	@Override
-	public List<Comments> getByDefectId(Defect defect) {
-		// TODO Auto-generated method stub
-		return commentRepository.findByDefect(defect);
+	public List<Comments> getAllComments() {
+		return commentRepository.findAll();
 	}
-
 }

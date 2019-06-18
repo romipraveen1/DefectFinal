@@ -3,7 +3,6 @@ package com.sgic.internal.defecttracker.defect.entities;
 
 	
 	import java.io.Serializable;
-	import java.util.Date;
 
 	import javax.persistence.Entity;
 	import javax.persistence.GeneratedValue;
@@ -12,6 +11,9 @@ package com.sgic.internal.defecttracker.defect.entities;
 	import javax.persistence.JoinColumn;
 	import javax.persistence.ManyToOne;
 	import javax.persistence.Table;
+	
+
+
 
 
 	
@@ -23,21 +25,23 @@ package com.sgic.internal.defecttracker.defect.entities;
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long commentId;
 		private String comments;
+		String commentedDate;
+		 
 		
-		
-		 private String commentedDate ;
-	
-		@ManyToOne
-		@JoinColumn(name="defectId", nullable=false)
-		private Defect defect;
-		
-		
+		 
 		public String getCommentedDate() {
 			return commentedDate;
 		}
 		public void setCommentedDate(String commentedDate) {
 			this.commentedDate = commentedDate;
 		}
+		@ManyToOne
+		@JoinColumn(name="defectId", nullable=false)
+		private Defect defect;
+		
+		
+	
+		
 		public Defect getDefect() {
 			return defect;
 		}

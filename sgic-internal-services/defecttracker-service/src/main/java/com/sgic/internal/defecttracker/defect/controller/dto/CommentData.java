@@ -3,23 +3,19 @@ package com.sgic.internal.defecttracker.defect.controller.dto;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
-
-import javax.persistence.Temporal;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 public class CommentData {
 	
 	private Long commentId;
 	private String comments;
-    private String commentedDate;
-   private String defectId;
-   
+	   private String defectId;
+	   
+	   private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    
+    Date date = new Date();
+    private String commentedDate=sdf.format(date);
+    
 public Long getCommentId() {
 	return commentId;
 }
@@ -32,6 +28,8 @@ public String getComments() {
 public void setComments(String comments) {
 	this.comments = comments;
 }
+
+
 public String getCommentedDate() {
 	return commentedDate;
 }
