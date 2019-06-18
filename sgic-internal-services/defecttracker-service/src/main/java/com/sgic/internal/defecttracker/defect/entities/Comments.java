@@ -12,10 +12,7 @@ package com.sgic.internal.defecttracker.defect.entities;
 	import javax.persistence.JoinColumn;
 	import javax.persistence.ManyToOne;
 	import javax.persistence.Table;
-import javax.persistence.Temporal;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 	
 	@Entity
@@ -27,15 +24,20 @@ import org.hibernate.annotations.GenerationTime;
 		private Long commentId;
 		private String comments;
 		
-		@Generated(GenerationTime.ALWAYS)
-		@Temporal(javax.persistence.TemporalType.DATE)
-		private Date commentedDate = new java.sql.Date(new java.util.Date().getTime());
+		
+		 private String commentedDate ;
 	
 		@ManyToOne
 		@JoinColumn(name="defectId", nullable=false)
 		private Defect defect;
 		
 		
+		public String getCommentedDate() {
+			return commentedDate;
+		}
+		public void setCommentedDate(String commentedDate) {
+			this.commentedDate = commentedDate;
+		}
 		public Defect getDefect() {
 			return defect;
 		}
@@ -54,13 +56,6 @@ import org.hibernate.annotations.GenerationTime;
 		public void setComments(String comments) {
 			this.comments = comments;
 		}
-		public Date getCommentedDate() {
-			return commentedDate;
-		}
-		public void setCommentedDate(Date commentedDate) {
-			this.commentedDate = commentedDate;
-		}
-		
 		
 
 	}
