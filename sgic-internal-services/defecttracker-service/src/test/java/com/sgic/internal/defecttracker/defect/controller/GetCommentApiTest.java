@@ -40,54 +40,35 @@ public class GetCommentApiTest extends CommentTest {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	@Before
-	public void setup() throws JSONException {
-
-	}
-
+//	@Before
+//	public void setup() throws JSONException {
+//		
+//	}
 
 	@Test
-	public void getAllEmployeeSuccessfull() throws IOException, RestClientException {
+	public void getCareerDevelopmentPlanCompanySuccessfull() throws IOException, RestClientException {
 
-
-		CommentData commentData = new CommentData();
-		commentData.setComments("hello");
-		commentData.setDefectId("1");
-		commentData.setCommentId((long) 1);
-		commentData.setCommentedDate("2019/06/18 15:25:59");
-
-		Comments comments = new Comments();
-		comments.setComments("utghtg");
-		comments.setCommentId((long) 1);
-		comments.setCommentedDate("2019/06/18 15:25:59");
-		Defect defect = new Defect();
-		defect.setDefectId(commentData.getDefectId());
-		comments.setDefect(defect);
-		System.out.println(comments);
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		String jsonComment = mapper.writeValueAsString(comments);
-
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("X-COM-PERSIST", "true");
-
-		HttpEntity<Comments> request = new HttpEntity<>(comments, headers);
-
-		    
-		 ResponseEntity<Comments> response  =     testRestTemplate.postForEntity("http://localhost:8080/defect" + "/comment", request, Comments.class);
-		  assertEquals(true, response.getBody());
-//		testRestTemplate.postForEntity("http://localhost:8080/defect" + "/comment",
-//				comments, Comments.class);
-//	    assertEquals(HttpStatus.OK, response.getStatusCodeValue());
-//	    assertEquals(true, response.getBody().contains("Missing request header"));
+		//String newUser = "INSERT INTO defecttracker.files (id,data,defect_id,file_name,file_type) VALUES (2,'131000',20,'aerial_view_of.jpg', 'image/jpeg')";
+		//jdbcTemplate.execute(newUser);
+		ResponseEntity<String> response = 
+				testRestTemplate.exchange("http://localhost:8081/defect" + "/downloadFile/1",
+				HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
+		Object body = "[{131526}]";
+		assertEquals(HttpStatus.OK, response.getStatusCode());
 
 	}
 
-	@After
+
+	@After                   
 	public void tearDown() {
-
 	}
-
-}
+	
+	 public final class GetCommentApiTestConstant{
+		    
+		    public GetCommentApiTestConstant() {
+		    }
+		    
+		    private static final String GET_COMMENT_API_TEST_RESPONSE =
+		        "[{131526}]";
+		  }
+		}

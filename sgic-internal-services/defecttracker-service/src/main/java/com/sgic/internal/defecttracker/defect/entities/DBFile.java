@@ -17,12 +17,9 @@ public class DBFile {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 	
-	@ManyToOne
-	@JoinColumn(name="defectId", nullable=false)
-	private Defect defect;
-	
-
-   
+//	@ManyToOne
+//	@JoinColumn(name="defectId", nullable=false)
+//	private Defect defect;
 
 	private String fileName;
 
@@ -30,18 +27,33 @@ public class DBFile {
 
     @Lob
     private byte[] data;
-
-    public DBFile() {
+    private Long defectId;
+ 
+	public DBFile() {
 
     }
 
-    public DBFile(String fileName, String fileType, byte[] data) {
+    public DBFile(String fileName, String fileType, byte[] data,Long defectId) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.defectId=defectId;
     }
+    
+    
 
-    public long getId() {
+  
+
+
+	public Long getDefectId() {
+		return defectId;
+	}
+
+	public void setDefectId(Long defectId) {
+		this.defectId = defectId;
+	}
+
+	public long getId() {
 		return id;
 	}
 

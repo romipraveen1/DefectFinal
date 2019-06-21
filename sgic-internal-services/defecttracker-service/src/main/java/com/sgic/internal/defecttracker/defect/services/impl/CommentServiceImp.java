@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sgic.internal.defecttracker.defect.entities.Comments;
-import com.sgic.internal.defecttracker.defect.entities.Defect;
 import com.sgic.internal.defecttracker.defect.repositories.CommentRepository;
 import com.sgic.internal.defecttracker.defect.services.CommentService;
 

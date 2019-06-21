@@ -17,9 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.sgic.internal.defecttracker.defect.entities.Comments;
 
-
-
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
@@ -27,11 +24,9 @@ public class CommentTest {
 	
 	@Rule	
 	  public WireMockRule wireMockRule = new WireMockRule(options().port(7081).httpsPort(7082));
-
-		 
+	 
 	  @Autowired
 	  protected TestRestTemplate testRestTemplate;
 	  protected HttpHeaders httpHeaders = new HttpHeaders();
-	
-	
+
 }

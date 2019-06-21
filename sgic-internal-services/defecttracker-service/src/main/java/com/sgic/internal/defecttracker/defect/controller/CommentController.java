@@ -31,18 +31,19 @@ public class CommentController {
 	@Autowired
 	private CommentMapper commentMapper;
 	
+	 // Post Mapping - Defect attachment API by Thuviyan
 	  @PostMapping(value = "/comment")
 	  public ResponseEntity<Object> createComments(@RequestBody CommentData commentData) {
-		
 		  LOG.info("starting creating comments"  );
 		  commentMapper.createComments(commentData);
-	    LOG.info(" comments saved"  );
+	      LOG.info(" comments saved"  );
 	    return new ResponseEntity<>(new ApiResponse(RestApiResponseStatus.OK), HttpStatus.OK);
 	   
 	  }
 	  
+	  // Get Mapping - Defect attachment API by Piratheepan
 	  @SuppressWarnings("null")
-	@GetMapping(value = "/comments/{defectId}")
+	  @GetMapping(value = "/comments/{defectId}")
 	  public List<Comments> getListComments(@PathVariable String defectId) {
 		
 	  LOG.info("comments getting"  );

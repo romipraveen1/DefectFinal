@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sgic.internal.defecttracker.defect.entities.Comments;
-import com.sgic.internal.defecttracker.defect.entities.Defect;
 
 
 @Service
