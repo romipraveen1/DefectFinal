@@ -19,13 +19,13 @@ public class FileMapper {
 	@Autowired
 	private FileStorageService fileStorageService;
 
-	public DBFile storeFile(FileData fileData) {
-		DBFile responseFile = fileStorageService.storeFile(fileDTOConverter.DTOToEntity(fileData));
-		return responseFile;
-	}
-	
-	public FileData fileToDTO(MultipartFile file,Long defectId) throws IOException {
-		FileData responseFile = fileDTOConverter.FileToDTO(file, defectId);
+//	public DBFile storeFile(FileData fileData) {
+//		DBFile responseFile = fileStorageService.storeFile(fileDTOConverter.DTOToEntity(fileData));
+//		return responseFile;
+//	}
+//	
+	public FileData fileToDTO(MultipartFile file) throws IOException {
+		FileData responseFile = fileDTOConverter.FileToDTO(file);
 		return responseFile;
 	}
 }

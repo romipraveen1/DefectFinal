@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.sgic.internal.defecttracker.defect.controller.dto.mapper.CommentMappe
 import com.sgic.internal.defecttracker.defect.entities.Comments;
 import com.sgic.internal.defecttracker.defect.services.impl.CommentServiceImp;
 
+@CrossOrigin
 @RestController
 public class CommentController {
 	
@@ -32,7 +34,8 @@ public class CommentController {
 	private CommentMapper commentMapper;
 	
 	 // Post Mapping - Defect attachment API by Thuviyan
-	  @PostMapping(value = "/comment")
+	//@CrossOrigin(origins = "http://localhost:3000")
+	  @PostMapping(value = "/comments")
 	  public ResponseEntity<Object> createComments(@RequestBody CommentData commentData) {
 		  LOG.info("starting creating comments"  );
 		  commentMapper.createComments(commentData);

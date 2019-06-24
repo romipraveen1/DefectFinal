@@ -32,43 +32,47 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sgic.internal.defecttracker.defect.CommentTest;
 import com.sgic.internal.defecttracker.defect.controller.dto.CommentData;
+import com.sgic.internal.defecttracker.defect.controller.dto.FileData;
 import com.sgic.internal.defecttracker.defect.entities.Comments;
+import com.sgic.internal.defecttracker.defect.entities.DBFile;
 import com.sgic.internal.defecttracker.defect.entities.Defect;
+import com.sgic.internal.defecttracker.project.entities.Project;
 
 public class GetCommentApiTest extends CommentTest {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	
+	
+	
+	@Before
+	public void setup() throws JSONException {
 
-//	@Before
-//	public void setup() throws JSONException {
-//		
-//	}
-
-	@Test
-	public void getCareerDevelopmentPlanCompanySuccessfull() throws IOException, RestClientException {
-
-		//String newUser = "INSERT INTO defecttracker.files (id,data,defect_id,file_name,file_type) VALUES (2,'131000',20,'aerial_view_of.jpg', 'image/jpeg')";
-		//jdbcTemplate.execute(newUser);
-		ResponseEntity<String> response = 
-				testRestTemplate.exchange("http://localhost:8081/defect" + "/downloadFile/1",
-				HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
-		Object body = "[{131526}]";
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-
+		String psql = "INSERT INTO defecttracker.project (project_name) VALUES ('aaa')";
+		String dsql = "INSERT INTO defecttracker.defect (defect_id,assign_to,comments,defect_type,description,module,priority,severity,status,steps,project_id) VALUES  ('1','','','','','','','','','',1)" ;
+		String sql1 = "INSERT INTO defecttracker.comments (commented_date, comments, defect_id) VALUES ('2019/06/21 16:17:33','aaa','1')";
+		
+		jdbcTemplate.execute(psql);
+		jdbcTemplate.execute(dsql);
+		jdbcTemplate.execute(sql1);
+		
 	}
-
+	
+	private String BASE_URL = "http://localhost:8080/defect";
+	private static final String GET_ALL_COMMENTS = "[{\"commentId\":1,\"comments\":\"aaa\",\"defectId\":\"1\",\"commentedDate\":\"2019/06/21 16:17:33\"}]";
+	
+	
+	@Test
+	public void getAllCommentsTest() throws IOException, RestClientException {
+		ResponseEntity<String> response = testRestTemplate.exchange(BASE_URL + "/commentAll", HttpMethod.GET,
+				new HttpEntity<>(httpHeaders), String.class);
+		assertEquals(GET_ALL_COMMENTS, response.getBody());
+	}
 
 	@After                   
 	public void tearDown() {
 	}
 	
-	 public final class GetCommentApiTestConstant{
-		    
-		    public GetCommentApiTestConstant() {
-		    }
-		    
-		    private static final String GET_COMMENT_API_TEST_RESPONSE =
-		        "[{131526}]";
-		  }
+
 		}

@@ -1,6 +1,6 @@
 package com.sgic.internal.defecttracker.defect.payload;
 
-public class UploadFileResponse {
+public class UploadFileResponse  {
     private String fileName;
     private String fileDownloadUri;
     private String fileType;

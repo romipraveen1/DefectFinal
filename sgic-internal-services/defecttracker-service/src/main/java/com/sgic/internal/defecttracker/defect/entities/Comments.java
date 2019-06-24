@@ -11,14 +11,9 @@ package com.sgic.internal.defecttracker.defect.entities;
 	import javax.persistence.JoinColumn;
 	import javax.persistence.ManyToOne;
 	import javax.persistence.Table;
-	
 
-
-
-
-	
 	@Entity
-	@Table( name = "comments")
+	@Table(schema="defecttracker" ,name = "comments")
 	public class Comments implements Serializable {
 		
 		@Id
@@ -38,10 +33,7 @@ package com.sgic.internal.defecttracker.defect.entities;
 		@ManyToOne
 		@JoinColumn(name="defectId", nullable=false)
 		private Defect defect;
-		
-		
-	
-		
+
 		public Defect getDefect() {
 			return defect;
 		}

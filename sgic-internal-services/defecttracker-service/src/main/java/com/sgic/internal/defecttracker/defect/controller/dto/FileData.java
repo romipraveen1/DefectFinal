@@ -10,65 +10,54 @@ public class FileData {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
-
 	private String fileName;
-
-    private String fileType;
-
-	@Lob
-    private byte[] data;
-	private Long defectId;
-	
-	public Long getDefectId() {
-		return defectId;
+	private String fileDownloadUri;
+    public Long getSize() {
+		return size;
 	}
 
-	public void setDefectId(Long defectId) {
-		this.defectId = defectId;
+	public void setSize(Long size) {
+		this.size = size;
 	}
+
+	private String fileType;
+    //private Long defectId
+    private Long size;
 
 	public FileData() {
 
     }
 
-    public FileData(String fileName, String fileType, byte[] data, Long defectId) {
-        this.fileName = fileName;
-        this.fileType = fileType;
-        this.data = data;
-        this.defectId = defectId;
+    public FileData(String fileName, String fileDownloadUri, String fileType, long size) {
+    	 this.fileName = fileName;
+	        this.fileDownloadUri = fileDownloadUri;
+	        this.fileType = fileType;
+	        this.size = size;
+       
     }
 
-    public long getId() {
-		return id;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
-   
 
-    public String getFileName() {
-        return fileName;
-    }
+	public String getFileDownloadUri() {
+		return fileDownloadUri;
+	}
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+	public void setFileDownloadUri(String fileDownloadUri) {
+		this.fileDownloadUri = fileDownloadUri;
+	}
 
-    public String getFileType() {
-        return fileType;
-    }
+	public String getFileType() {
+		return fileType;
+	}
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
-    }
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
 
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
 }

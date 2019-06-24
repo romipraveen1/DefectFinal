@@ -18,25 +18,25 @@ public class FileDTOConverter {
 		DBFile dbFile=new DBFile();
 		dbFile.setFileName(fileData.getFileName());
 		dbFile.setFileType(fileData.getFileType());
-		dbFile.setData(fileData.getData());
-		dbFile.setDefectId(fileData.getDefectId());
+		dbFile.setFileDownloadUri(fileData.getFileDownloadUri());
+		dbFile.setSize(fileData.getSize());
 		return dbFile;
 	}
 	public FileData EntityToDTO(DBFile dbFile) {
 		FileData fileData=new FileData();
 		fileData.setFileName(dbFile.getFileName());
 		fileData.setFileType(dbFile.getFileType());
-		fileData.setData(dbFile.getData());
-		fileData.setDefectId(dbFile.getDefectId());
+		fileData.setFileDownloadUri(dbFile.getFileDownloadUri());
+		fileData.setSize(dbFile.getSize());
 		return fileData;
 	}
-	public FileData FileToDTO(MultipartFile file,Long defectId) throws IOException {
+	public FileData FileToDTO(MultipartFile file) throws IOException {
     	String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		FileData fileData=new FileData();
 		fileData.setFileName(fileName);
 		fileData.setFileType(file.getContentType());
-		fileData.setData(file.getBytes());
-		fileData.setDefectId(defectId);
+		fileData.setFileDownloadUri(file.getContentType());
+		fileData.setSize(file.getSize());
 		return fileData;
 	}
 	public List<FileData> ListEntityToDTO(List<DBFile> dbFiles) {
@@ -45,8 +45,8 @@ public class FileDTOConverter {
 		FileData fileData=new FileData();
 		fileData.setFileName(dbFile.getFileName());
 		fileData.setFileType(dbFile.getFileType());
-		fileData.setData(dbFile.getData());
-		fileData.setDefectId(dbFile.getDefectId());
+		fileData.setFileDownloadUri(dbFile.getFileDownloadUri());
+		fileData.setSize(dbFile.getSize());
 		list.add(fileData);
 		}
 		return list;
